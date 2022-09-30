@@ -1,0 +1,20 @@
+.header{
+    margin-top: 15px;
+    height: 120px;
+    background-color: #1C2B35;
+    display: flex;
+    align-content: center;
+    justify-content:space-between ;
+    padding-left: 97px;
+}
+.header a{
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 17px;
+}
+.manu{
+    display: flex;
+    padding-top: 45px;
+    gap: 32px;
+    padding-right: 97px ;
+}
