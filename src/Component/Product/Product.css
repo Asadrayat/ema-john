@@ -1,0 +1,35 @@
+.product img {
+    height: 320px;
+    width: 95%;
+    border-radius: 10px;
+    padding: 10px;
+
+}
+
+.product {
+    border: 2px solid grey;
+    border-radius: 10px;
+    position: relative;
+}
+.p-info{
+    padding: 14px;
+}
+
+.p-name {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+}
+.p-btn{
+    height: 50px;
+    background-color: #FFE0B3;
+    width: 100%;
+    border: none;
+    border-radius: 0 0 10px 10px;
+    position: absolute;
+    bottom: 0;
+}
+.p-btn:hover{
+    background-color: rgb(205, 150, 13);
+}
