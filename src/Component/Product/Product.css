@@ -29,7 +29,12 @@
     border-radius: 0 0 10px 10px;
     position: absolute;
     bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 }
+
 .p-btn:hover{
     background-color: rgb(205, 150, 13);
 }
