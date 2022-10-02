@@ -10,6 +10,10 @@
     margin-top: 120px ;
    
 }
+.cart-container{
+  background-color:  #FF99004D;
+  margin-left: 15%;
+}
 @media screen and (max-width :1100px) {
   .product-container{
     grid-template-columns: repeat(2, 1fr);
