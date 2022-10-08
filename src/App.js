@@ -5,6 +5,7 @@ import Root from './Component/Root/Root';
 import Order from './Component/Order/Order';
 import About from './Component/About/About';
 import Inventory from './Component/Inventory/Inventory';
+import { productAndStorderCartLoader } from './Loader/ProductAndStoredCart';
 function App() {
   const router = createBrowserRouter([
     {
@@ -23,7 +24,7 @@ function App() {
         },
         {
           path : "/order",
-          loader : () => fetch('./fakeData/products.json'),
+          loader : productAndStorderCartLoader,
           element : <Order></Order>
         },
         {
