@@ -1,51 +1,57 @@
 import { useEffect, useState } from 'react';
-import {addToDb, getStoredCart} from './../../utilities/fakedb'
+import { addToDb, deleteShoppingCart, getStoredCart } from './../../utilities/fakedb'
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 const Shop = () => {
-  const products = useLoaderData();
-  const [cart,setCart] =useState([]);
-  
-  useEffect(() =>{
-   const storedCart = getStoredCart();
-   const savedCart = [];
-   for(const id in storedCart){
-      const addedProduct = products.find(product => product.id === id);
-      if(addedProduct){
-         const quantity = storedCart[id];
-         addedProduct.quantity = quantity;
-         savedCart.push(addedProduct);
-      }
+   const products = useLoaderData();
+   const [cart, setCart] = useState([]);
+   const clearCart = () => {
+      setCart([]);
+      deleteShoppingCart();
    }
-   setCart(savedCart);
-},[products])
-  const handleAddToCart = (product) =>{
-   // console.log(product);
+   useEffect(() => {
+      const storedCart = getStoredCart();
+      const savedCart = [];
+      for (const id in storedCart) {
+         const addedProduct = products.find(product => product.id === id);
+         if (addedProduct) {
+            const quantity = storedCart[id];
+            addedProduct.quantity = quantity;
+            savedCart.push(addedProduct);
+         }
+      }
+      setCart(savedCart);
+   }, [products])
+   const handleAddToCart = (product) => {
+      // console.log(product);
 
-   const newCart = [...cart,product];
-   setCart(newCart);
-   addToDb(product.id );
-}
-    return (
-        <div className='body-ct'> 
-            <div className="product-container">
-               {
-                  products.map(product => <Product
+      const newCart = [...cart, product];
+      setCart(newCart);
+      addToDb(product.id);
+   }
+   return (
+      <div className='body-ct'>
+         <div className="product-container">
+            {
+               products.map(product => <Product
                   key={product.id}
-                  product ={product}
-                  handleAddToCart = {handleAddToCart}
-                  ></Product>)
-               }
-            </div>
-            <div className="cart-container">
-               <Cart 
-               cart={cart}
-               ></Cart>
-            </div>
-        </div>
-    );
+                  product={product}
+                  handleAddToCart={handleAddToCart}
+               ></Product>)
+            }
+         </div>
+         <div className="cart-container">
+            <Cart
+               clearCart={clearCart} cart={cart}>
+               <Link to="/order">
+                  <button>Reveiw order</button>
+               </Link>
+            </Cart>
+         </div>
+      </div >
+   );
 };
 
 export default Shop;

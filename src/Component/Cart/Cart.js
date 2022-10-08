@@ -1,10 +1,10 @@
 import React from 'react';
-import'./Cart.css'
+import './Cart.css'
 const Cart = (props) => {
-    const {cart} = props;
-    let total =0;
+    const { cart, clearCart, children } = props;
+    let total = 0;
     let shipping = 0;
-    for (const product of cart){
+    for (const product of cart) {
         total = product.price + total;
         shipping = shipping + product.shipping;
     }
@@ -19,7 +19,8 @@ const Cart = (props) => {
             <h4>Total Shipping Charges : ${shipping}</h4>
             <h4>Tax : ${tax} </h4>
             <h3>Grand Total : {grandTotal}</h3>
-
+            <button onClick={clearCart}>Clear Cart</button>
+            {children}
         </div>
     );
 };
